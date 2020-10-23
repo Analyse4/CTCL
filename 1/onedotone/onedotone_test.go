@@ -20,3 +20,22 @@ func TestIsStringAllDifferenceV1(t *testing.T) {
 		t.Errorf("string: %v, want: %v, get: %v\n", eur, raur, !rar)
 	}
 }
+
+func TestIsStringAllDifferenceV2(t *testing.T) {
+	const elen = 50
+	er := make([]rune, 0)
+	eur := make([]rune, 0)
+	for i := 0; i < elen; i++ {
+		er = append(er, rune(65))
+		er = append(er, rune(65+i))
+	}
+	rar := false
+	raur := true
+
+	if rar != IsStringAllDifferenceV2(er) {
+		t.Errorf("string: %v, want: %v, get: %v\n", er, rar, !rar)
+	}
+	if raur != IsStringAllDifferenceV2(eur) {
+		t.Errorf("string: %v, want: %v, get: %v\n", eur, raur, !rar)
+	}
+}

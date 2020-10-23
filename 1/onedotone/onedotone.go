@@ -1,10 +1,11 @@
 package onedotone
 
-import "sort"
+import (
+	"github.com/Analyse4/mew/algs/binarysearch"
+	"github.com/Analyse4/mew/algs/quicksort"
+)
 
-//"github.com/Analyse4/mew/algs/quicksort"
-
-// O(n^2)
+// O(N^2)
 func IsStringAllDifferenceV1(s []rune) bool {
 	for i, v1 := range s {
 		for _, v2 := range s[i+1:] {
@@ -16,10 +17,17 @@ func IsStringAllDifferenceV1(s []rune) bool {
 	return true
 }
 
+// O(Nlog(N))
 func IsStringAllDifferenceV2(s []rune) bool {
 	sm := make([]int, len(s))
 	for i := range s {
 		sm[i] = int(s[i])
 	}
-	sort.Ints(sm)
+	quicksort.QuickSort(sm)
+	for _, v := range sm {
+		if binarysearch.BinarySearch(v, sm) >= 0 {
+			return false
+		}
+	}
+	return true
 }
