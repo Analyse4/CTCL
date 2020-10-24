@@ -10,7 +10,7 @@ func TestURLify(t *testing.T) {
 	ra := "Mr%20John%20Smith"
 	e = URLify(e, 13)
 	sm := strings.Trim(string(e), string(rune(0)))
-	if ra != sm {
+	if ra != string(sm) {
 		t.Errorf("URLify is Wrong\nwant_string: %v\nwant_bytes: %v\nget_string: %v\nget_bytes: %v\n", ra, []rune(ra), sm, []rune(sm))
 	}
 }
