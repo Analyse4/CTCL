@@ -14,3 +14,15 @@ func DeleteMiddleNode(n *linkedlist.Node) {
 		n = n.Next
 	}
 }
+
+// O(1)
+func DeleteMiddleNodeV2(n *linkedlist.Node) bool {
+	if n == nil || n.Next == nil {
+		return false
+	}
+	next := n.Next
+	n.Key = next.Key
+	n.Value = next.Value
+	n.Next = next.Next
+	return true
+}
