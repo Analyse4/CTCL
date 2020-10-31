@@ -16,7 +16,7 @@ func TestMinimalHeightTree(t *testing.T) {
 		args args
 		want int
 	}{
-		{"height-3", args{[]int{1, 2, 3, 5}}, 3},
+		{"height-3", args{[]int{1, 2, 3, 4, 5}}, 3},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
