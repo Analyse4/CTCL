@@ -20,3 +20,27 @@ func ListOfDepths(tr *tree.Node, ll *list.List, dep int) {
 	ListOfDepths(tr.Children[1], ll, dep)
 	dep++
 }
+
+// O(N)
+func ListOfDepthV1(n *tree.Node) [][]*tree.Node {
+	if n == nil {
+		return nil
+	}
+	sl := make([][]*tree.Node, 0)
+	current := make([]*tree.Node, 0)
+	current = append(current, n)
+	for len(current) != 0 {
+		sl = append(sl, current)
+		parent := current
+		current = make([]*tree.Node, 0)
+		for _, v := range parent {
+			if v.Children[0] != nil {
+				current = append(current, v.Children[0])
+			}
+			if v.Children[1] != nil {
+				current = append(current, v.Children[1])
+			}
+		}
+	}
+	return sl
+}
