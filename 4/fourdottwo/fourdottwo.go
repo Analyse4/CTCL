@@ -3,12 +3,12 @@ package fourdottwo
 import "github.com/Analyse4/mew/adt/tree"
 
 // O(N)
-func MinimalHeightTree(l []int) *tree.Node {
+func MinimalHeightTree(l []int) *tree.Tree {
 	if len(l) == 0 {
 		return nil
 	}
 	mid := len(l) / 2
-	n := &tree.Node{l[mid], make([]*tree.Node, 2)}
+	n := &tree.Tree{l[mid], make([]*tree.Tree, 2)}
 	if len(l) == 1 {
 		return n
 	}

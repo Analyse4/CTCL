@@ -3,8 +3,6 @@ package fourdottwo
 import (
 	"reflect"
 	"testing"
-
-	"github.com/Analyse4/mew/adt/tree"
 )
 
 func TestMinimalHeightTree(t *testing.T) {
@@ -20,8 +18,7 @@ func TestMinimalHeightTree(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			tr := tree.New()
-			tr.ChangeRoot(MinimalHeightTree(tt.args.l))
+			tr := MinimalHeightTree(tt.args.l)
 			if got := tr.Height(); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("MinimalHeightTree() = %v, want %v", got, tt.want)
 			}

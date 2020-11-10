@@ -7,7 +7,7 @@ import (
 )
 
 // O(N)
-func ListOfDepths(tr *tree.Node, ll *list.List, dep int) {
+func ListOfDepths(tr *tree.Tree, ll *list.List, dep int) {
 	if tr == nil {
 		return
 	}
@@ -22,17 +22,17 @@ func ListOfDepths(tr *tree.Node, ll *list.List, dep int) {
 }
 
 // O(N)
-func ListOfDepthV1(n *tree.Node) [][]*tree.Node {
+func ListOfDepthV1(n *tree.Tree) [][]*tree.Tree {
 	if n == nil {
 		return nil
 	}
-	sl := make([][]*tree.Node, 0)
-	current := make([]*tree.Node, 0)
+	sl := make([][]*tree.Tree, 0)
+	current := make([]*tree.Tree, 0)
 	current = append(current, n)
 	for len(current) != 0 {
 		sl = append(sl, current)
 		parent := current
-		current = make([]*tree.Node, 0)
+		current = make([]*tree.Tree, 0)
 		for _, v := range parent {
 			if v.Children[0] != nil {
 				current = append(current, v.Children[0])
