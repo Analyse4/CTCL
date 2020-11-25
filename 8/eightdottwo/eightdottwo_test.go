@@ -24,13 +24,31 @@ func TestRobotSearchPath(t *testing.T) {
 		{1, 0},
 		{0, 0},
 	}
+	want2 := []*position{
+		{7, 6},
+		{7, 5},
+		{7, 4},
+		{7, 3},
+		{7, 2},
+		{7, 1},
+		{6, 1},
+		{5, 1},
+		{4, 1},
+		{3, 1},
+		{2, 1},
+		{1, 1},
+		{0, 1},
+		{0, 0},
+	}
 	s1 := stack.New()
+	s2 := stack.New()
 
 	type args struct {
-		r        int
-		c        int
-		banPoint []*position
-		path     *stack.Stack
+		r          int
+		c          int
+		banPoint   []*position
+		path       *stack.Stack
+		faildPoint []*position
 	}
 	tests := []struct {
 		name  string
@@ -38,11 +56,12 @@ func TestRobotSearchPath(t *testing.T) {
 		want  bool
 		want1 []*position
 	}{
-		{"1-test", args{7, 7, []*position{{7, 0}}, s1}, true, want1},
+		{"1-test", args{7, 7, []*position{{7, 0}}, s1, make([]*position, 0)}, true, want1},
+		{"2-test", args{7, 7, []*position{{1, 0}}, s2, make([]*position, 0)}, true, want2},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, got1 := RobotSearchPath(tt.args.r, tt.args.c, tt.args.banPoint, tt.args.path)
+			got, got1, _ := RobotSearchPath(tt.args.r, tt.args.c, tt.args.banPoint, tt.args.path, tt.args.faildPoint)
 			if got != tt.want {
 				t.Errorf("RobotSearchPath() got = %v, want %v", got, tt.want)
 			}
