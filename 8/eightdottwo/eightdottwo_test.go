@@ -81,3 +81,11 @@ func TestRobotSearchPath(t *testing.T) {
 		})
 	}
 }
+
+func TestCountSlice(t *testing.T) {
+	l := &[]int{}
+	CountSlice(l)
+	if len(*l) != 1 {
+		t.Fatalf("wrong count, got: %v, want: %v\n", len(*l), 1)
+	}
+}

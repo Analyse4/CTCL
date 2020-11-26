@@ -102,3 +102,7 @@ func isFaildPoint(r, c int, faildPoint []*position) bool {
 	}
 	return false
 }
+
+func CountSlice(l *[]int) {
+	*l = append(*l, 1)
+}
